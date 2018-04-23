@@ -252,7 +252,6 @@ const Parser = function (functions, tokens) {
 		* Whether it is an identifier
 	**/
 	this.isIdentifier = () => this.tokens[0].match(/^[a-zA-Z][_a-zA-Z0-9]*$/)
-	
 	/**
 		* Parse Assignments
 	**/
@@ -266,7 +265,9 @@ const Parser = function (functions, tokens) {
 			value: V
 		};
 	}
-	
+	/**
+		* Parse function calls
+	**/
 	this.parseFnCall = () => {
 		var that = this;
 		var name = this.tokens.shift();
@@ -282,6 +283,9 @@ const Parser = function (functions, tokens) {
 			args: args,
 		};
 	}
+	/**
+		* Parse container
+	**/
 	this.parseContainer = () => {
 		this.shift();
 		var E = this.parseExpr();
@@ -308,9 +312,9 @@ const Parser = function (functions, tokens) {
 	}
 	this.validateIdentifiers = (names, tree) => {
 		var used = this.varNames(tree);
-		used.forEach(function (name) {
-			if (-1 === names.indexOf(name))
-		throw `Unknown identifier: ${name}`
+		used.forEach(_ => {
+			if (names.indexOf(_) === -1)
+				throw `Unknown identifier: ${_}`
 		});
 	}
 	this.varNames = T => {
@@ -328,7 +332,7 @@ const Parser = function (functions, tokens) {
 		case "fnCall":
 			var all = [];
 			args.forEach(_ => 
-			all = all.concat(crnt));
+				all = all.concat(_));
 			return all;
 		case "container":
 			return this.varNames(T.child);
