@@ -37,6 +37,9 @@ const Interpreter = function () {
 			* Switching over different inputs
 		**/
 		switch (T.type) {
+			/**
+				* If it is an operator ( + , - , * , / , % )
+			**/
 		case "operator":
 			var 
 				l = this.interpret(T.left) ,
@@ -59,14 +62,23 @@ const Interpreter = function () {
 				)
 				})()
 			)
+		/**
+			* It is a number (0-9)
+		**/
 		case "number":
 			return +T.value
+		/**
+			If it is assignment operator
+		**/
 		case "assignment":
 			if (T.name in this.functions)
 				throw `Variable name collides with function name : ${T.name}`;
 			var V = this.interpret(T.value);
 			this.variables[T.name] = V;
 			return V;
+		/**
+			* If it is an identifier
+		**/
 		case "identifier":
 			return (
 				T.value in this.variables ?
@@ -75,16 +87,22 @@ const Interpreter = function () {
 	throw `Missing identifier : ${T.value}`
 				})()
 			)
+		/**
+			* If it is a function ( Func )
+		**/
 		case "function":
 			if (T.name in this.variables)
 	throw `Function name collides with variable name: ${T.name}`
 			this.functions[T.name] = T;
 			return "";
+		/**
+			* If it is a function call
+		**/
 		case "fnCall":
 			var that = this;
 			var fn = this.functions[T.name];
 			var args = T.args.reduce((args, pair) => (
-args[pair[0]] = that.interpret(pair[1]), 
+				args[pair[0]] = that.interpret(pair[1]) ,
 				args
 			), Object.create(this.variables));
 			var oldVars = this.variables;
@@ -92,10 +110,19 @@ args[pair[0]] = that.interpret(pair[1]),
 			var R = this.interpret(fn.body);
 			this.variables = oldVars;
 			return R;
+		/**
+			* ...
+		**/
 		case "container":
 			return this.interpret(T.child);
+		/**
+			* No operators
+		**/
 		case "noop":
 			return ""
+		/**
+			* Default error.
+		**/
 		default:
 			throw `What type is ${i(T)}`;
 		}
@@ -106,9 +133,11 @@ args[pair[0]] = that.interpret(pair[1]),
 	*/
 	this.tokenize = P => P == "" ? 
 		[] : 
-	P.split(
-/\s*(=>|[-+*\/\%=\(\)]|[A-Za-z_][A-Za-z0-9_]*|[0-9]*\.?[0-9]+)\s*/g
-		).filter(_ => !_.match(/^\s*$/)
+		P.split
+			(
+				/\s*(=>|[-+*\/\%=\(\)]|[A-Za-z_][A-Za-z0-9_]*|[0-9]*\.?[0-9]+)\s*/g
+			)
+			.filter(_ => !_.match(/^\s*$/)
 	);
 	/**
 		* The parser
