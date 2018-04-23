@@ -3,7 +3,7 @@
 		* Math expression are just normal. i.e : 2 + 1 etc..
 		* Supports addition , subtraction , multiplication , division , modulo , parenthesis.
 		* assignment operator ( = )
-		* variable declaration is : (x = 12 )
+		* variable declaration is : ( x = 12 )
 		* functions : 
 			* ` fn nameOfFunc arg1 arg2 => (return what ever )`
 ----------------------------------------------------------------------------------------------------------------------------------------
@@ -33,9 +33,9 @@ const Interpreter = function () {
 		* @param {parsed input or Tree} T
 	**/
 	this.interpret = T => {
-		/*
+		/**
 			* Switching over different inputs
-		*/
+		**/
 		switch (T.type) {
 		case "operator":
 			var 
@@ -144,7 +144,7 @@ const Parser = function (functions, tokens) {
 			type: 'noop'
 		}
 	})() : 
-	this.tokens[0] === 'fn' ? 
+	this.tokens[0] === 'Func' ? 
 		(() => {
 			this.shift();
 				var N = this.tokens.shift(),
@@ -184,7 +184,7 @@ const Parser = function (functions, tokens) {
 			};
 		} else if (this.tokens[0][0] === '(') {
 			leftExpr = this.parseContainer();
-		} else if (this.tokens[0] === 'fn') {
+		} else if (this.tokens[0] === 'Func') {
 			leftExpr = this.parseFn();
 		} else if (this.tokens[0][0] === ')') {
 			throw `What is : ${i(this.tokens)}`
