@@ -58,7 +58,7 @@ const Interpreter = function () {
 					l % r : 
 				(() => {
 				throw (
-		`Unknown operator ? ${i(T)}`
+					`Unknown operator ? ${i(T)}`
 				)
 				})()
 			)
@@ -84,7 +84,7 @@ const Interpreter = function () {
 				T.value in this.variables ?
 					this.variables[T.value] :
 				(() => {
-	throw `Missing identifier : ${T.value}`
+					throw `Missing identifier : ${T.value}`
 				})()
 			)
 		/**
@@ -92,7 +92,7 @@ const Interpreter = function () {
 		**/
 		case "function":
 			if (T.name in this.variables)
-	throw `Function name collides with variable name: ${T.name}`
+				throw `Function name collides with variable name: ${T.name}`
 			this.functions[T.name] = T;
 			return "";
 		/**
@@ -196,7 +196,7 @@ const Parser = function (functions, tokens) {
 		var leftExpr = null ,
 			rightExpr = null;
 		if (this.tokens.length === 0)
-			throw "Empty Program";
+			throw "This is an empty program";
 		if (this.isIdentifier() && this.tokens[1] === '=') {
 			leftExpr = this.parseAssignment();
 		} else if (this.tokens[0].match(/^[0-9][\.0-9]*$/)) {
@@ -343,5 +343,11 @@ const Parser = function (functions, tokens) {
 		}
 	}
 }
-a = new Interpreter;
-document.write(a.input('1 + 3'))
+a = new Interpreter();
+try {
+	a.input('')
+} catch(error) {
+	console.log(error)
+}
+
+// document.write(a.input('1 + 3'))
