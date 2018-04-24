@@ -211,7 +211,7 @@ const Parser = function (functions, tokens) {
 		var leftExpr = null ,
 			rightExpr = null;
 		if (this.tokens.length === 0)
-			throw "Hello World!";
+			throw "Hello, World!";
 		if (this.isIdentifier() && this.tokens[1] === '=') {
 			leftExpr = this.parseAssignment();
 		} else if (this.tokens[0].match(/^[0-9][\.0-9]*$/)) {
