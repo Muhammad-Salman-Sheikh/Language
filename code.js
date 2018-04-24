@@ -310,6 +310,9 @@ const Parser = function (functions, tokens) {
 			child: E
 		};
 	}
+	/**
+		* Parse function arguments. 
+	**/
 	this.parseFnArgs = () => {
 		var args = [];
 		while (this.tokens[0] !== "=>")
@@ -318,6 +321,9 @@ const Parser = function (functions, tokens) {
 			throw "Duplicate argument names";
 		return args;
 	}
+	/**
+		* Check to see for duplicate arguments
+	**/
 	this.containsDuplicates = A => {
 		for (var i = 0; i < A.length; ++i)
 			for (var j = i + 1; j < A.length; ++j)
@@ -325,6 +331,9 @@ const Parser = function (functions, tokens) {
 					return true;
 		return false;
 	}
+	/**
+		* Check for valid identifiers
+	**/
 	this.validateIdentifiers = (names, tree) => {
 		var used = this.varNames(tree);
 		used.forEach(_ => {
@@ -332,6 +341,9 @@ const Parser = function (functions, tokens) {
 				throw `Unknown identifier: ${_}`
 		});
 	}
+	/**
+		* Check for different Types of intput operators , numbers etc...
+	**/
 	this.varNames = T => {
 		switch (T.type) {
 		case "operator" :
