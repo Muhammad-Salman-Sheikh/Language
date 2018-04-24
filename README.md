@@ -1,6 +1,18 @@
 # SIMPLE
 A simple programming language
 
+## Install
+Make sure to have `node` installed. If you don't, head over to [nodejs.org](https://nodejs.org/en/)
+and follow the installation instructions. Also make sure to have [git](https://git-scm.com) installed.
+Then run the following commands:
+```bash
+git clone https://github.com/Muhammad-Salman-Sheikh/Language/edit/master/README.md
+cd Language
+node code-min.js
+```
+If this gives an error, contact me at "vikramvdurai@gmail.com". If not (and you see a lot of output), congrats!
+You just installed `SIMPLE`!
+
 ## Syntax
 The syntax of the language is as follows:
   * Compute expressions like usual, i.e `2 + 1`, `5 % 2` etc..
@@ -17,3 +29,10 @@ The syntax of the language is as follows:
 ## Quirks
 An empty program will display FizBuzz program and exits with an error.
 A program containing any operator but no numbers will display `Hello World!` and exit with an error
+
+
+## Roadmap
+  * Input/Output
+  * Advanced logic flow (ternary operator, if/else/elif)
+  * Improved functions
+  * Loops
