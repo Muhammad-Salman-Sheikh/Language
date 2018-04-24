@@ -63,7 +63,7 @@ const Interpreter = function () {
 				})()
 			)
 		/**
-			* It is a number (0-9)
+			* If it is a number (0-9)
 		**/
 		case "number":
 			return +T.value
