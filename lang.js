@@ -5,7 +5,7 @@
 		* assignment operator ( = )
 		* variable declaration is : ( x = 12 )
 		* functions : 
-			* ` fn nameOfFunc arg1 arg2 => (return what ever )`
+			* ` fn nameOfFunc arg1 arg2 => ( return what ever )`
 	* @Special_Functions :
 		* An empty program will display FizBuzz program (exits with error)
 		* A program containing any operator ( + , - , * , / , % ) but no numbers will display Hello World! and exit with error
@@ -318,10 +318,10 @@ const Parser = function (functions, tokens) {
 			throw "Duplicate argument names";
 		return args;
 	}
-	this.containsDuplicates = array => {
-		for (var i = 0; i < array.length; ++i)
-			for (var j = i + 1; j < array.length; ++j)
-				if (array[i] === array[j])
+	this.containsDuplicates = A => {
+		for (var i = 0; i < A.length; ++i)
+			for (var j = i + 1; j < A.length; ++j)
+				if (A[i] === A[j])
 					return true;
 		return false;
 	}
@@ -334,24 +334,24 @@ const Parser = function (functions, tokens) {
 	}
 	this.varNames = T => {
 		switch (T.type) {
-		case "operator":
+		case "operator" :
 			return this.varNames(T.left).concat(this.varNames(T.right));
-		case "number":
+		case "number" :
 			return [];
-		case "assignment":
+		case "assignment" :
 			return this.varNames(T.value);
-		case "identifier":
+		case "identifier" :
 			return [T.value];
-		case "function":
+		case "function" :
 			return [];
-		case "fnCall":
+		case "fnCall" :
 			var all = [];
 			args.forEach(_ => 
 				all = all.concat(_));
 			return all;
-		case "container":
+		case "container" :
 			return this.varNames(T.child);
-		case "noop":
+		case "noop" :
 			return [];
 		default:
 			throw `What type is : ${i(T)}`
@@ -364,5 +364,3 @@ try {
 } catch(error) {
 	console.log(error)
 }
-
-// document.write(a.input('1 + 3'))
