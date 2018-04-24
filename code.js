@@ -14,7 +14,7 @@
 **/
 
 // JSON stringifying the input
-i = _ => JSON.stringify(_);
+i = JSON.stringify;
 
 /**
 	* The Interpreter
