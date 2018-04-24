@@ -5,7 +5,7 @@
 		* assignment operator ( = )
 		* variable declaration is : ( x = 12 )
 		* functions : 
-			* ` fn nameOfFunc arg1 arg2 => ( return what ever )`
+			* ` Func nameOfFunc arg1 arg2 => ( return what ever )`
 	* @Special_Functions :
 		* An empty program will display FizBuzz program ( exits with error )
 		* A program containing any operator ( + , - , * , / , % ) but no numbers will display Hello World! and exit with error
