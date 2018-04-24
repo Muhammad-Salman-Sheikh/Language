@@ -6,6 +6,10 @@
 		* variable declaration is : ( x = 12 )
 		* functions : 
 			* ` fn nameOfFunc arg1 arg2 => (return what ever )`
+	* @Special_Functions :
+		* An empty program will display FizBuzz program (exits with error)
+		* A program containing any operator ( + , - , * , / , % ) but no numbers will display Hello World! and exit with error
+		* .... WIP
 ----------------------------------------------------------------------------------------------------------------------------------------
 **/
 
@@ -116,10 +120,21 @@ const Interpreter = function () {
 		case "container":
 			return this.interpret(T.child);
 		/**
-			* No operators
+			* No operators. ( Empty program ). Then this outputs FizzBuzz and exits with an error .
 		**/
 		case "noop":
-			return ""
+			let a = ''
+			for(let i = 1; i <= 100; i++) {
+				if(i % 3 == 0 && i % 5 == 0) 
+					a += 'FizzBuzz '
+				else if(i % 3 == 0)
+					a += 'Fizz '
+				else if(i % 5 == 0)
+					a += 'Buzz '
+				else
+					a += `${i} `
+			}
+			throw a.split` `.join`\n`				
 		/**
 			* Default error.
 		**/
@@ -196,7 +211,7 @@ const Parser = function (functions, tokens) {
 		var leftExpr = null ,
 			rightExpr = null;
 		if (this.tokens.length === 0)
-			throw "This is an empty program";
+			throw "Hello World!";
 		if (this.isIdentifier() && this.tokens[1] === '=') {
 			leftExpr = this.parseAssignment();
 		} else if (this.tokens[0].match(/^[0-9][\.0-9]*$/)) {
