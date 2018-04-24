@@ -1,5 +1,5 @@
-# Language
-I am developing a language, so this is my working place. The language's name is `SIMPLE`.
+# SIMPLE
+A simple programming language
 
 ## Syntax
 The syntax of the language is as follows:
