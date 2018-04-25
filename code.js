@@ -371,8 +371,3 @@ const Parser = function (functions, tokens) {
 	}
 }
 a = new Interpreter();
-try {
-	a.input('')
-} catch(error) {
-	console.log(error)
-}
