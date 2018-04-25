@@ -6,7 +6,7 @@ Make sure to have `node` installed. If you don't, head over to [nodejs.org](http
 and follow the installation instructions. Also make sure to have [git](https://git-scm.com) installed.
 Then run the following commands:
 ```bash
-git clone https://github.com/Muhammad-Salman-Sheikh/Language/edit/master/README.md
+git clone https://github.com/Muhammad-Salman-Sheikh/Language/
 cd Language
 node code-min.js
 ```
