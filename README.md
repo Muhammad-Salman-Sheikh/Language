@@ -1,5 +1,7 @@
 # SIMPLE
-A simple programming language
+**SIMPLE** is a basic programming langauge designed for golfing purposes. 
+
+---
 
 ## Install
 Make sure to have `node` installed. If you don't, head over to [nodejs.org](https://nodejs.org/en/)
@@ -8,15 +10,14 @@ Then run the following commands:
 ```bash
 git clone https://github.com/Muhammad-Salman-Sheikh/Language/
 cd Language
-node code-min.js
+node code.js
 ```
-If this gives an error, contact me at "vikramvdurai@gmail.com". If not (and you see a lot of output), congrats!
-You just installed `SIMPLE`!
+---
 
 ## Syntax
 The syntax of the language is as follows:
   * Compute expressions like usual, i.e `2 + 1`, `5 % 2` etc..
-		
+  
   * Supports addition, subtraction, multiplication, division, modulo (`%`), parenthesis.
 		
   * Supports variables, to declare one simply type the variable's name, an equals sign and the number you want to assign it to.
@@ -26,10 +27,14 @@ The syntax of the language is as follows:
   make a function `double` that has an argument `x` and returns the results of the expression `x * 2`. Entering the expression
   `double 3` will expand to `6`.
 
-## Quirks
-An empty program will display FizBuzz program and exits with an error.
-A program containing any operator but no numbers will display `Hello World!` and exit with an error
+---
 
+## Quirks
+- An empty program will display FizBuzz program and exits with an error.
+- A program containing any operator but no numbers will display `Hello World!` and exit with an error
+- A program consisting of any alphabets will output the 12 days of Chrismats and exit with an error
+
+---
 
 ## Roadmap
   * Input/Output
