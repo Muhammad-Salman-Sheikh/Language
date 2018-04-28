@@ -61,9 +61,7 @@ const Interpreter = function () {
 				o == '%' ? 
 					l % r : 
 				(() => {
-				throw (
-					`Unknown operator ? ${i(T)}`
-				)
+					throw 'Unknown operator'
 				})()
 			)
 		/**
@@ -88,7 +86,39 @@ const Interpreter = function () {
 				T.value in this.variables ?
 					this.variables[T.value] :
 				(() => {
-					throw `Missing identifier : ${T.value}`
+					var days = [
+						'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 
+						'eleventh', 'twelfth',
+					];
+					var gifts = [
+					"A partridge in a pear tree",
+					"Two turtle doves",
+					"Three french hens",
+					"Four calling birds",
+					"Five golden rings",
+					"Six geese a-laying",
+					"Seven swans a-swimming",
+					"Eight maids a-milking",
+					"Nine ladies dancing",
+					"Ten lords a-leaping",
+					"Eleven pipers piping",
+					"Twelve drummers drumming"
+					];
+					var lines, verses = [], song;
+					for ( var i = 0; i < 12; i++ ) {
+						lines = [];
+						lines[0] = "On the " + days[i] + " day of Christmas, my true love gave to me";
+						var j = i + 1;
+						var k = 0;
+						while ( j-- > 0 )
+						lines[++k] = gifts[j];
+						verses[i] = lines.join`
+	`;
+						if ( i == 0 )
+							gifts[0] = "And a partridge in a pear tree";
+					}
+					song = verses.join('\n\n');
+					throw song
 				})()
 			)
 		/**
