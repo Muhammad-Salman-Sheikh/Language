@@ -1,3 +1,4 @@
+// WIP
 /**
 	* The syntax of the language is as follow :
 		* Math expression are just normal. i.e : 2 + 1 etc..
@@ -12,7 +13,7 @@
 		* .... WIP
 ----------------------------------------------------------------------------------------------------------------------------------------
 **/
-
+const CODE = '';
 // JSON stringifying the input
 i = JSON.stringify;
 
@@ -164,7 +165,26 @@ const Interpreter = function () {
 				else
 					a += `${i} `
 			}
-			throw a.split` `.join`\n`				
+			throw a.split` `.join`\n`
+		case 'reserved':
+			if(T.name == 'Prime') {
+				let a = T.args;
+				if(a == 0 || a == 1) {
+					throw 'false'
+				}
+				else if(a == 3 || a == 2) {
+					throw 'true';
+				}
+				else {
+					for(var i = 2; i < a; i++) {
+						if(i % a == 0) {
+							throw 'false';
+						}else if (i == a) {
+							throw 'true';
+						}
+					}
+				}
+			}
 		/**
 			* Default error.
 		**/
@@ -232,7 +252,20 @@ const Parser = function (functions, tokens) {
 				args: A,
 				body: B
 			};
-	})() : 
+	})() : this.tokens[0] == 'Prime' ?
+		(() => {
+			this.shift();
+				var N = this.tokens.shift(),
+				    A = this.parsePrimeArgs();
+			this.shift()
+			var B = this.parseExpr();
+			this.validateIdentifiers(A, B);
+			return {
+				type: "reserved",
+				name: N,
+				args: A
+			};
+	})() :
 	this.parseExpr()
 	
 	this.shift = () => this.tokens.shift();
@@ -328,6 +361,16 @@ const Parser = function (functions, tokens) {
 			args: args,
 		};
 	}
+	/** 
+		* Parse prime calls
+	**/
+	this.parsePrimeCall = () => {
+		var that = this;
+		var name = this.tokens.shift();
+		var that = this;
+		var name = this.tokens.shift();
+		var args = '';
+	}	
 	/**
 		* Parse container
 	**/
@@ -351,6 +394,15 @@ const Parser = function (functions, tokens) {
 			throw "Duplicate argument names";
 		return args;
 	}
+	/**
+		* Parse prime arguments
+	**/
+	this.parsePrimeArgs = () => {
+		var args = [];
+		while(this.tokens[0] !== ';')
+			args.push(this.tokens.shift());
+		return args;
+	}	
 	/**
 		* Check to see for duplicate arguments
 	**/
@@ -401,3 +453,9 @@ const Parser = function (functions, tokens) {
 	}
 }
 a = new Interpreter();
+try {
+	console.log(a.input(CODE))
+}
+catch(e){
+		console.log(e)
+	}
