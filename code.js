@@ -13,7 +13,7 @@
 		* .... WIP
 ----------------------------------------------------------------------------------------------------------------------------------------
 **/
-const CODE = '';
+const CODE = prompt();
 // JSON stringifying the input
 i = JSON.stringify;
 
@@ -168,22 +168,27 @@ const Interpreter = function () {
 			throw a.split` `.join`\n`
 		case 'reserved':
 			if(T.name == 'Prime') {
-				let a = T.args;
-				if(a == 0 || a == 1) {
-					throw 'false'
-				}
-				else if(a == 3 || a == 2) {
-					throw 'true';
-				}
-				else {
-					for(var i = 2; i < a; i++) {
-						if(i % a == 0) {
-							throw 'false';
-						}else if (i == a) {
-							throw 'true';
+				let prim = T.args;
+				let arr = [];
+				for(var i = 0; i < prim.length; i++) {
+					let a = a[i]
+					if(a == 0 || a == 1) {
+						arr.push(false);
+					}
+					else if(a == 3 || a == 2) {
+						arr.push(true);
+					}
+					else {
+						for(var i = 2; i < a; i++) {
+							if(i % a == 0) {
+								arr.push(false);
+							}else if (i == a) {
+								arr.push(true);
+							}
 						}
 					}
 				}
+				throw arr
 			}
 		/**
 			* Default error.
