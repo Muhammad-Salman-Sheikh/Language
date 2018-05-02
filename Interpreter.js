@@ -1,3 +1,5 @@
+var Parser = require('https://github.com/Muhammad-Salman-Sheikh/Language/blob/master/parser.js')
+
 // JSON stringifying the input
 i = JSON.stringify;
 
