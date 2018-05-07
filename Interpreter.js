@@ -441,3 +441,6 @@ const Parser = function (functions, tokens) {
 		}
 	}
 }
+
+var intItALl = new Interpreter();
+module.exports.Interpreter = intItALl
