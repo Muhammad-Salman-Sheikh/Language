@@ -32,7 +32,7 @@ The syntax of the language is as follows:
 ## Quirks
 - An empty program will display FizBuzz program and exits with an error.
 - A program containing any operator but no numbers will display `Hello World!` and exit with an error
-- A program consisting of any alphabets will output the 12 days of Chrismats and exit with an error
+- A program consisting of any alphabets will output The 12 Days of Christmas and exit with an error
 
 ---
 
